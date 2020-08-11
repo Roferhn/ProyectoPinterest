@@ -23,69 +23,70 @@ public class MainActivity extends AppCompatActivity {
     private EditText EtEmail,EtPassword;
     private Button  BtnLogin;
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth.AuthStateListener AuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
+        mAuth = FirebaseAuth.getInstance();
+
         EtEmail = (EditText) findViewById(R.id.email);
         EtPassword = (EditText) findViewById(R.id.password);
         BtnLogin = (Button) findViewById(R.id.login);
 
-        mAuth = FirebaseAuth.getInstance();
-
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        AuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
 
-                if (firebaseAuth.getCurrentUser()!=null){
-                    startActivity(new Intent(MainActivity.this,MainActivity2.class));
-                }else {
+                if (firebaseAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(MainActivity.this, MainActivity2.class));
+                } else {
 
-                    Toast.makeText(MainActivity.this, "Datos incoreectos", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "Datos incoreectos", Toast.LENGTH_SHORT).show();
                 }
             }
 
-        }
+        };
 
         BtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                LogUser();
             }
         });
-        
+
 
 
 
 
     }
-    
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(AuthListener);
+    }
+
     private void LogUser(){
 
         String email = EtEmail.getText().toString();
         String password = EtPassword.getText().toString();
 
-        mAuth.createUserWithEmailAndPassword(email, password)
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
 
+                        Log.d(TAG, "singWithEmail:onComplete:"+ task.isSuccessful());
+
+                        if(!task.isSuccessful()) {
+                            Log.w(TAG, "signInWithEmail", task.getException());
+                            Toast.makeText(MainActivity.this, "Authentication failed",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                         // ...
                     }
                 });
