@@ -6,4 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BtnSearch"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RV"
+        android:layout_width="408dp"
+        android:layout_height="572dp"
+        tools:layout_editor_absoluteY="159dp"
+        tools:layout_editor_absoluteX="3dp"/>
+    
+    <EditText
+        android:id="@+id/EtSearch"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:layout_editor_absoluteX="74dp"/>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
