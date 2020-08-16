@@ -59,8 +59,8 @@ public class MainActivity2 extends AppCompatActivity {
                                 JSONObject hit = jsonArray.getJSONObject(i);
 
                                 String autorName = hit.getString("user");
-                                String imageUrl = hit.getString("webformatURL");
-                                int likeCount = hit.getInt("likes");
+                                String imageUrl = hit.getString("largeImageURL");
+                                String likeCount = hit.getString("likes");
 
                                 mList.add(new ModelItem(autorName, imageUrl, likeCount));
 
