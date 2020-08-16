@@ -36,7 +36,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        ModelItem currentItem = mList.get(position);
+        String imageUrl = currentItem.getImageURL();
+        String autorName = currentItem.getAutor();
+        String likesCount = currentItem.getLikes();
     }
 
     @Override
