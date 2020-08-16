@@ -1,4 +1,4 @@
-package com.example.proyectopinterest.Activities;
+package com.example.proyectopinterest;
 
 import androidx.appcompat.app.AppCompatActivity;
 

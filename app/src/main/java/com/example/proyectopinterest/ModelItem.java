@@ -1,13 +1,15 @@
-public class Item {
+package com.example.proyectopinterest;
+
+public class ModelItem {
 
     private String mImageURL;
     private String mLikes;
     private String mAutor;
 
-    public Item() {
+    public ModelItem() {
     }
 
-    public Item(String ImageURL, String Likes, String Autor) {
+    public ModelItem(String ImageURL, String Likes, String Autor) {
         mImageURL = ImageURL;
         mLikes = Likes;
         mAutor = Autor;
