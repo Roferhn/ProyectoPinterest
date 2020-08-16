@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
@@ -40,6 +42,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         String imageUrl = currentItem.getImageURL();
         String autorName = currentItem.getAutor();
         String likesCount = currentItem.getLikes();
+
+        holder.mTextviewAutor.setText(autorName);
+        holder.mTextviewLikes.setText("Likes: " + likesCount);
+        Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
     }
 
     @Override
