@@ -62,7 +62,7 @@ public class MainActivity2 extends AppCompatActivity {
                                 String imageUrl = hit.getString("largeImageURL");
                                 String likeCount = hit.getString("likes");
 
-                                mList.add(new ModelItem(autorName, imageUrl, likeCount));
+                                mList.add(new ModelItem(imageUrl,likeCount,autorName));
 
                             }
 

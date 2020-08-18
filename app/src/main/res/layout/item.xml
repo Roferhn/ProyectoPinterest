@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        >
 
         <ImageView
             android:id="@+id/image_view"
@@ -27,14 +28,14 @@
             android:textColor="@android:color/black"
             android:textSize="20sp"
             />
-        <TextView
-            android:id="@+id/text_view_likes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Likes: "
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/text_view_likes"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Likes: "-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:textSize="20sp"-->
+<!--            />-->
 
 
     </LinearLayout>

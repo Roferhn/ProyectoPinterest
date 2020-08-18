@@ -43,8 +43,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         String autorName = currentItem.getAutor();
         String likesCount = currentItem.getLikes();
 
-        holder.mTextviewAutor.setText(autorName);
-        holder.mTextviewLikes.setText("Likes: " + likesCount);
+       holder.mTextviewAutor.setText("Photo by: "+autorName);
+//        holder.mTextviewLikes.setText("Likes: " + likesCount);
         Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
     }
 
@@ -70,7 +70,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
             mImageView = itemView.findViewById(R.id.image_view);
             mTextviewAutor = itemView.findViewById(R.id.text_view_autor);
-            mTextviewLikes = itemView.findViewById(R.id.text_view_likes);
+//            mTextviewLikes = itemView.findViewById(R.id.text_view_likes);
         }
     }
 
