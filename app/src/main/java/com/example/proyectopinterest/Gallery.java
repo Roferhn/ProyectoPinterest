@@ -4,11 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Display;
-import android.widget.EditText;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,7 +13,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.proyectopinterest.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +20,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity2 extends AppCompatActivity implements Adapter.onItemClickListener {
+public class Gallery extends AppCompatActivity implements Adapter.onItemClickListener {
 
     public static final String EXTRA_URL = "imageUrl";
     public static final String EXTRA_AUTOR = "AutorName";
@@ -38,7 +34,7 @@ public class MainActivity2 extends AppCompatActivity implements Adapter.onItemCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.layuot_RV);
 
 
         mRecyclerView =findViewById(R.id.RV);
@@ -74,9 +70,9 @@ public class MainActivity2 extends AppCompatActivity implements Adapter.onItemCl
 
                             }
 
-                            mAdapter = new Adapter(MainActivity2.this, mList);
+                            mAdapter = new Adapter(Gallery.this, mList);
                             mRecyclerView.setAdapter(mAdapter);
-                            mAdapter.setOnItemClickListener(MainActivity2.this);
+                            mAdapter.setOnItemClickListener(Gallery.this);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -96,7 +92,7 @@ public class MainActivity2 extends AppCompatActivity implements Adapter.onItemCl
 
     @Override
     public void onItemClick(int position) {
-        Intent detailIntent = new Intent(this, MainActivity3.class);
+        Intent detailIntent = new Intent(this, ImagesDetails.class);
         ModelItem clickedItem = mList.get(position);
 
         detailIntent.putExtra(EXTRA_URL, clickedItem.getImageURL());

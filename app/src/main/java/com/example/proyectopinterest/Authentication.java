@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class Authentication extends AppCompatActivity {
 
     private static final String TAG = "Antut";
     private EditText EtEmail,EtPassword;
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.layout_login);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -41,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (firebaseAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(MainActivity.this, MainActivity2.class));
+                    startActivity(new Intent(Authentication.this, Gallery.class));
                 } else {
 
-                    //Toast.makeText(MainActivity.this, "Datos incoreectos", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Authentication.this, "Datos incoreectos", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if(!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed",
+                            Toast.makeText(Authentication.this, "Authentication failed",
                                     Toast.LENGTH_SHORT).show();
                         }
                         // ...

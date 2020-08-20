@@ -9,16 +9,16 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import static com.example.proyectopinterest.MainActivity2.EXTRA_AUTOR;
-import static com.example.proyectopinterest.MainActivity2.EXTRA_LIKES;
-import static com.example.proyectopinterest.MainActivity2.EXTRA_URL;
+import static com.example.proyectopinterest.Gallery.EXTRA_AUTOR;
+import static com.example.proyectopinterest.Gallery.EXTRA_LIKES;
+import static com.example.proyectopinterest.Gallery.EXTRA_URL;
 
-public class MainActivity3 extends AppCompatActivity {
+public class ImagesDetails extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.layout_details);
 
         Intent intent = getIntent();
         String imageUrl = intent.getStringExtra(EXTRA_URL);
