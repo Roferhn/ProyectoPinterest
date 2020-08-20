@@ -19,6 +19,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     //-------------------------------------------------------//-----------------------------------------------------------
     private Context mContext;
     private ArrayList<ModelItem> mList;
+    private onItemClickListener mListener;
+
+    public interface onItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener){
+        mListener = listener;
+    }
 
     public Adapter(Context context, ArrayList<ModelItem> list) {
         mContext = context;
@@ -44,17 +53,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         String likesCount = currentItem.getLikes();
 
        holder.mTextviewAutor.setText("Photo by: "+autorName);
-//        holder.mTextviewLikes.setText("Likes: " + likesCount);
+        holder.mTextviewLikes.setText("Likes: " + likesCount);
         Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
     }
+
+    //----------------------------------------------------------//-----------------------------------------------------------
 
     @Override
     public int getItemCount() {
         return mList.size();
     }
-
-
-    //----------------------------------------------------------//-----------------------------------------------------------
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -62,15 +70,27 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         public TextView mTextviewAutor;
         public TextView mTextviewLikes;
 
-
-
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mImageView = itemView.findViewById(R.id.image_view);
             mTextviewAutor = itemView.findViewById(R.id.text_view_autor);
-//            mTextviewLikes = itemView.findViewById(R.id.text_view_likes);
+            mTextviewLikes = itemView.findViewById(R.id.text_view_likes);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+
+                    if(mListener != null){
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                         mListener.onItemClick(position);
+                        }
+                    }
+
+                }
+            });
         }
     }
 

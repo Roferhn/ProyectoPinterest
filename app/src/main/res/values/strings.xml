@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ProyectoPinterest</string>
+    <string name="photo_by">Photo by:</string>
 </resources>

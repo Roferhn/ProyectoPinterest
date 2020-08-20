@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DownloadManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Display;
+import android.widget.EditText;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,7 +24,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity2 extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity implements Adapter.onItemClickListener {
+
+    public static final String EXTRA_URL = "imageUrl";
+    public static final String EXTRA_AUTOR = "AutorName";
+    public static final String EXTRA_LIKES = "LikeCount";
 
     private RecyclerView mRecyclerView;
     private Adapter mAdapter;
@@ -33,6 +39,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
 
         mRecyclerView =findViewById(R.id.RV);
         mRecyclerView.setHasFixedSize(true);
@@ -47,7 +54,8 @@ public class MainActivity2 extends AppCompatActivity {
 
     private void parseJson() {
 
-        String url= "https://pixabay.com/api/?key=17928583-32797671385677407f1267da7&q=kitten&image_type=photo&pretty=true";
+
+        String url= "https://pixabay.com/api/?key=17928583-32797671385677407f1267da7&q=kitty&image_type=photo&pretty=true";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -68,6 +76,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                             mAdapter = new Adapter(MainActivity2.this, mList);
                             mRecyclerView.setAdapter(mAdapter);
+                            mAdapter.setOnItemClickListener(MainActivity2.this);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -85,4 +94,15 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemClick(int position) {
+        Intent detailIntent = new Intent(this, MainActivity3.class);
+        ModelItem clickedItem = mList.get(position);
+
+        detailIntent.putExtra(EXTRA_URL, clickedItem.getImageURL());
+        detailIntent.putExtra(EXTRA_AUTOR, clickedItem.getAutor());
+        detailIntent.putExtra(EXTRA_LIKES, clickedItem.getLikes());
+
+        startActivity(detailIntent);
+    }
 }

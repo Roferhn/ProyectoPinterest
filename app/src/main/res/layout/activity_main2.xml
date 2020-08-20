@@ -4,16 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".MainActivity2">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+<!--    <EditText-->
+<!--        android:id="@+id/edit_text_search"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:hint="Search..." />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RV"
         android:layout_width="match_parent"
         android:layout_height="658dp"
+        android:layout_marginTop="0dp"
         android:background="@android:color/darker_gray" />
 
 </RelativeLayout>
