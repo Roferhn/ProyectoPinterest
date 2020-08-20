@@ -30,7 +30,7 @@ public class MainActivity3 extends AppCompatActivity {
         TextView textViewLikes = findViewById(R.id.text_view_like_detail);
 
         Picasso.with(this).load(imageUrl).fit().centerInside().into(imageView);
-        textViewAutor.setText(autorName);
+        textViewAutor.setText("Photo by: "+ autorName);
         textViewLikes.setText("Likes: " + likeCount);
 
     }
