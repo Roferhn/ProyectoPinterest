@@ -1,3 +1,4 @@
+
 package com.example.proyectopinterest;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,7 @@ public class Registro extends AppCompatActivity {
         BtnRegis = (Button) findViewById(R.id.Regis);
 
         mAuth = FirebaseAuth.getInstance();
-        mDataBase = FirebaseDatabase.getInstance();
+        mDataBase = FirebaseDatabase.getInstance().getReference();
 
         BtnRegis.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +88,7 @@ public class Registro extends AppCompatActivity {
 
                     String id = mAuth.getCurrentUser().getUid();
 
-                    mDataBase.child("users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    mDataBase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if(task2.isSuccessful()){
@@ -107,7 +108,7 @@ public class Registro extends AppCompatActivity {
                     Toast.makeText(Registro.this, "Registration Failed.", Toast.LENGTH_SHORT).show();
                 }
             }
-        })
+        });
 
     }
 }
