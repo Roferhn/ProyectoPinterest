@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ImagesDetails"></activity>
+        <activity android:name=".Registro"></activity>
+        <activity android:name=".ImagesDetails" />
         <activity android:name=".Gallery" />
         <activity android:name=".Authentication">
             <intent-filter>

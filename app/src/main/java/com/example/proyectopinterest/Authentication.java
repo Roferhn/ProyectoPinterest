@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Authentication extends AppCompatActivity {
 
@@ -24,10 +25,13 @@ public class Authentication extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener AuthListener;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -35,20 +39,22 @@ public class Authentication extends AppCompatActivity {
         EtPassword = (EditText) findViewById(R.id.password);
         BtnLogin = (Button) findViewById(R.id.login);
 
+
+
         AuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
-
                 if (firebaseAuth.getCurrentUser() != null) {
                     startActivity(new Intent(Authentication.this, Gallery.class));
                 } else {
-
-                    //Toast.makeText(Authentication.this, "Datos incoreectos", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Authentication.this, "Datos incorectos", Toast.LENGTH_SHORT).show();
                 }
             }
 
         };
+
+
 
         BtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,18 +69,19 @@ public class Authentication extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-        mAuth.addAuthStateListener(AuthListener);
-    }
+//    @Override
+//    protected void onStart(){
+//        super.onStart();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        updateUI(currentUser);
+//    }
 
     private void LogUser(){
 
         String email = EtEmail.getText().toString();
         String password = EtPassword.getText().toString();
 
-        mAuth.signInWithEmailAndPassword(email, password)
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

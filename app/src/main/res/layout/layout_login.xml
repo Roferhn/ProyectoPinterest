@@ -4,22 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".Authentication">
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:id="@+id/email"
-        />
+        android:textColor="@color/Black"
+        android:layout_marginTop="230dp"
+        android:hint="Email" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/email"
+        android:layout_marginTop="50dp"
         android:hint="Password"
-        android:id="@+id/password"
-        android:layout_below="@+id/email"
-        />
+        android:textColor="@color/Black" />
 
     <Button
         android:layout_width="wrap_content"
@@ -27,6 +30,14 @@
         android:text="Login"
         android:id="@+id/login"
         android:layout_below="@id/password"
-        android:layout_centerInParent="true"/>
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/unnamed" />
+
 
 </RelativeLayout>

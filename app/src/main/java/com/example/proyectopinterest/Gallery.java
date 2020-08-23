@@ -34,7 +34,7 @@ public class Gallery extends AppCompatActivity implements Adapter.onItemClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layuot_RV);
+        setContentView(R.layout.layout_rv);
 
 
         mRecyclerView =findViewById(R.id.RV);
