@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/Black"
-        android:layout_marginTop="230dp"
-        android:hint="Email" />
+        android:layout_marginTop="250dp"
+        android:hint="Email"
+        />
 
     <EditText
         android:id="@+id/password"
@@ -22,7 +23,8 @@
         android:layout_alignTop="@+id/email"
         android:layout_marginTop="50dp"
         android:hint="Password"
-        android:textColor="@color/Black" />
+        android:textColor="@color/Black"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -30,14 +32,25 @@
         android:text="Login"
         android:id="@+id/login"
         android:layout_below="@id/password"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Acount"
+        android:id="@+id/registro"
+        android:layout_below="@id/login"
+        android:layout_centerHorizontal="true"
+        />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/unnamed" />
+        app:srcCompat="@drawable/unnamed"
+        />
 
 
 </RelativeLayout>
